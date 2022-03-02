@@ -231,7 +231,7 @@ exit
 <p>
 
 ```bash
-kubectl get po nginx -o yaml --export
+kubectl get pod nginx -o json | jq 'del(.metadata.namespace,.metadata.resourceVersion,.metadata.uid) | .metadata.creationTimestamp=null'
 ```
 
 </p>
